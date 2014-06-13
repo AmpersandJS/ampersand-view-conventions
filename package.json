@@ -26,7 +26,10 @@
     "url": "git://github.com/ampersandjs/ampersand-view-conventions"
   },
   "scripts": {
-    "test": "browserify test/* | tape-run",
+    "test": "browserify test/* | tape-run | tap-spec",
     "start": "run-browser test/*"
+  },
+  "devDependencies": {
+    "tap-spec": "^0.2.0"
   }
 }
