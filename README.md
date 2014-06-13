@@ -3,7 +3,7 @@
 
 The core purpose of a view is to manage the contents, events, and behavior or a single DOM element.
 
-In ampersand, **a "view" doesn't have to actually be an "amperand-view"** at all.
+In ampersand, **a "view" doesn't have to actually be an "ampersand-view"** at all.
 
 But in order to maintain the ability to write a collection renderer or to be able to render sub-views it's useful to have a few simple conventions we follow.
 
