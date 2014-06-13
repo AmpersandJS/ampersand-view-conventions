@@ -14,6 +14,9 @@
     "tape": "~2.13.3",
     "tape-run": "~0.1.1"
   },
+  "devDependencies": {
+    "tap-spec": "^0.2.0"
+  },
   "homepage": "https://github.com/ampersandjs/ampersand-view-conventions",
   "keywords": [
     "ampersand",
@@ -28,8 +31,5 @@
   "scripts": {
     "test": "browserify test/* | tape-run | tap-spec",
     "start": "run-browser test/*"
-  },
-  "devDependencies": {
-    "tap-spec": "^0.2.0"
   }
 }
