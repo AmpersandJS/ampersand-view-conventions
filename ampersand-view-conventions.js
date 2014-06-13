@@ -32,7 +32,7 @@ exports.view = function (test, ViewClass, requiredOptions) {
 
             // calling remove should remove itself from the DOM
             view.remove();
-            t.ok(!view.el.parentNode, 'should no longer have a parent node');
+            t.ok(!view.el.parentNode, 'after calling remove should no longer have a parent node');
             t.ok(container.children.length === 0, 'container should have no children');
             t.end();
         }
@@ -59,6 +59,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
 
             // helper we can call
             function ensureProperties(str) {
+                str = str || '';
                 t.ok(view.hasOwnProperty('value'), 'has `value` property' + str);
                 t.equal(typeof view.name, 'string', 'has `name` property that is a string' + str);
                 t.notEqual(view.name, '', '`name` property should not be empty string' + str);
