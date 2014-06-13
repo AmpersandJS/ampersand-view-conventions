@@ -1,5 +1,6 @@
+var test = require('tape');
 var MinimalView = require('../minimal-view');
-var viewCompliance = require('../view-conventions-test');
+var viewCompliance = require('../ampersand-view-conventions');
 
 
-viewCompliance.view(MinimalView);
+viewCompliance.view(test, MinimalView);

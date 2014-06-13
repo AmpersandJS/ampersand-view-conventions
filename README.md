@@ -57,18 +57,29 @@ npm install ampersand-view-conventions
 
 ## example
 
+The view compliance tests are written for tape. Simply pass in the test instance and your view constructor.
+
+If there are additional required options for instantiating your view, pass those as a third argument.
+
 ```javascript
+var test = require('tape');
 var viewCompliance = require('ampersand-view-conventions');
 var YourView = require('your-awesome-view');
 
 // if there are no additional required arguments, you can just pass in
 // the constructor
-viewCompliance(YourView);
+viewCompliance(test, YourView);
 
 // if there's additional arguments required to instantiate your view
 // pass those in too. This is just minimal amount required to be able 
 // to instantiate an instance of your view.
-viewCompliance(YourView, {some: 'option object'});
+viewCompliance(test, YourView, {some: 'option object'});
+
+// your other tests
+test('something', function (t) {
+    t.pass();
+    t.end();
+})
 ```
 
 ## license
