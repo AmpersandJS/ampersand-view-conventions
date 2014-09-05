@@ -7,16 +7,16 @@
     "url": "https://github.com/ampersandjs/ampersand-view-conventions/issues"
   },
   "dependencies": {
-    "browserify": "~4.1.10",
     "extend-object": "~1.0.0",
-    "is-function": "~1.0.1",
-    "run-browser": "~1.3.1",
-    "tape": "~2.13.3",
-    "tape-run": "~0.1.1"
+    "is-function": "~1.0.1"
   },
   "devDependencies": {
+    "browserify": "~4.1.10",
     "phantomjs": "^1.9.7-15",
-    "tap-spec": "^0.2.0"
+    "run-browser": "~1.3.1",
+    "tap-spec": "^0.2.0",
+    "tape": "~2.13.3",
+    "tape-run": "~0.1.1"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-view-conventions",
   "keywords": [
