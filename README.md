@@ -68,12 +68,12 @@ var YourView = require('your-awesome-view');
 
 // if there are no additional required arguments, you can just pass in
 // the constructor
-viewCompliance(test, YourView);
+viewCompliance.view(test, YourView);
 
 // if there's additional arguments required to instantiate your view
-// pass those in too. This is just minimal amount required to be able 
+// pass those in too. This is just minimal amount required to be able
 // to instantiate an instance of your view.
-viewCompliance(test, YourView, {some: 'option object'});
+viewCompliance.view(test, YourView, {some: 'option object'});
 
 // your other tests
 test('something', function (t) {
@@ -81,6 +81,28 @@ test('something', function (t) {
     t.end();
 })
 ```
+
+# form fields
+
+If you have a form field that complies with the [ampersand form field conventions](http://ampersandjs.com/learn/forms#form-input-view-conventions),
+you can make sure it plays nicely with [ampersand-form-view](https://github.com/ampersandjs/ampersand-form-view).
+
+Use the `formField` method and pass in the test instance, the view constructor, required options and a valid value.
+
+```javascript
+var test = require('tape');
+var viewCompliance = require('ampersand-view-conventions');
+var YourFormFieldView = require('your-wicked-form-field-view');
+
+// you need at least a name for the required options and a valid value
+viewCompliance.formField(test, YourFormFieldView, {name: 'field'}, 'valid value');
+
+// also run the view tests if you like, for good measure
+viewCompliance.view(test, YourFormFieldView, {name: 'field'});
+```
+
+Refer to [minimal-field-view.js](https://github.com/AmpersandJS/ampersand-view-conventions/blob/master/minimal-field-view.js) for an example form field
+that implements the conventions.
 
 ## license
 
