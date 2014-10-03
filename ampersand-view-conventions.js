@@ -60,7 +60,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
             // helper we can call
             function ensureProperties(str) {
                 str = str || '';
-                t.ok(view.hasOwnProperty('value'), 'has `value` property' + str);
+                t.ok(view.hasOwnProperty('value') || view.value, 'has `value` property' + str);
                 t.equal(typeof view.name, 'string', 'has `name` property that is a string' + str);
                 t.notEqual(view.name, '', '`name` property should not be empty string' + str);
                 t.ok(isFunction(view.setValue), 'has `setValue` method' + str);
