@@ -5,7 +5,6 @@ if (!Function.prototype.bind) {
     Function.prototype.bind = require('function-bind');
 }
 
-window.tests = [];
 function hasPropertyDefinition(object, fieldName) {
     //truthy
     if (object[fieldName]) { return true; }
