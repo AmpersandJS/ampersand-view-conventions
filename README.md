@@ -35,7 +35,7 @@ MinimalView.prototype.render = function () {
 };
 
 // It should have a `remove` method that does any tear down you may want
-// to do. Including ideally removing itself from it's parent (if reasonable to do so)
+// to do. Including ideally removing itself from its parent (if reasonable to do so)
 MinimalView.prototype.remove = function () {
     // you could do it with vanilla JS like this
     var parent = this.el.parentNode;
