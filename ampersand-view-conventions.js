@@ -1,6 +1,31 @@
 var extend = require('extend-object');
 var isFunction = require('is-function');
 
+if (!Function.prototype.bind) {
+    Function.prototype.bind = require('function-bind');
+}
+
+function hasPropertyDefinition(object, fieldName) {
+    //truthy
+    if (object[fieldName]) { return true; }
+
+    //defined on the object, but not truthy
+    if (object.hasOwnProperty(fieldName)) { return true; }
+
+    //Defined as a getter/setter on the prototype chain
+    var current = object.constructor.prototype;
+    var fieldDefinition;
+
+    while (current !== Object.getPrototypeOf({})) {
+        fieldDefinition = Object.getOwnPropertyDescriptor(current, fieldName);
+        if (fieldDefinition && fieldDefinition.get) { return true; }
+
+        current = Object.getPrototypeOf(current);
+    }
+
+    return false;
+}
+
 
 exports.view = function (test, ViewClass, requiredOptions) {
     var tests = {
@@ -60,7 +85,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
             // helper we can call
             function ensureProperties(str) {
                 str = str || '';
-                t.ok(view.hasOwnProperty('value') || view.value, 'has `value` property' + str);
+                t.ok(hasPropertyDefinition(view, 'value'), 'has `value` property' + str);
                 t.equal(typeof view.name, 'string', 'has `name` property that is a string' + str);
                 t.notEqual(view.name, '', '`name` property should not be empty string' + str);
                 t.ok(isFunction(view.setValue), 'has `setValue` method' + str);
@@ -77,7 +102,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
                 view.setValue(validValue);
             }, 'should not error when setting valid value');
 
-            t.equal(counter, 1, 'should have called `update` on parent when value changed');
+            t.notEqual(counter, 0, 'should have called `update` on parent when value changed');
             t.equal(parent.passedField, view, 'should have passed itself to the parent when changed');
 
             // all this should still be true after setting a value
