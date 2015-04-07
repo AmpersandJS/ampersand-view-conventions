@@ -17,7 +17,7 @@ function hasPropertyDefinition(object, fieldName) {
     var fieldDefinition;
 
     while (current !== Object.getPrototypeOf({})) {
-        fieldDefinition = Object.getOwnPropertyDescriptor(current, 'value');
+        fieldDefinition = Object.getOwnPropertyDescriptor(current, fieldName);
         if (fieldDefinition && fieldDefinition.get) { return true; }
 
         current = Object.getPrototypeOf(current);
@@ -102,7 +102,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
                 view.setValue(validValue);
             }, 'should not error when setting valid value');
 
-            t.equal(counter, 1, 'should have called `update` on parent when value changed');
+            t.notEqual(counter, 0, 'should have called `update` on parent when value changed');
             t.equal(parent.passedField, view, 'should have passed itself to the parent when changed');
 
             // all this should still be true after setting a value
