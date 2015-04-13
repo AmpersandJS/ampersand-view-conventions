@@ -89,7 +89,7 @@ exports.formField = function (test, ViewClass, requiredOptions, validValue) {
                 t.equal(typeof view.name, 'string', 'has `name` property that is a string' + str);
                 t.notEqual(view.name, '', '`name` property should not be empty string' + str);
                 t.ok(isFunction(view.setValue), 'has `setValue` method' + str);
-                t.ok(typeof view.valid, 'boolean', 'has `valid` property that is a boolean' + str);
+                t.equal(typeof view.valid, 'boolean', 'has `valid` property that is a boolean' + str);
                 t.equal(parent, view.parent, 'has same `parent` property' + str);
             }
 
