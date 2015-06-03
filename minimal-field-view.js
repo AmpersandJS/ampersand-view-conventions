@@ -25,6 +25,8 @@ MinimalFieldView.prototype.render = function () {
 // Form fields have to have a setValue method that sets it to what is passed
 MinimalFieldView.prototype.setValue = function (value) {
     this.value = value;
+    this.valid = !!value;
+
     // if there is a parent call update
     if (this.parent) this.parent.update(this);
 };
